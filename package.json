@@ -9,10 +9,22 @@
     "babel-register": "^6.18.0",
     "chai": "~1.8.0",
     "chai-change": "^2.1.2",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "mocha": "2.0.1"
   },
   "scripts": {
     "build": "babel src -d lib",
     "test": "mocha --compilers js:babel-register ./spec/*.js"
+  },
+  "repository": {
+  "type": "git",
+  "url": "git://github.com/leikkisa/core-data-structures.git"
+  },
+  "licenses": {
+    "type": "MIT",
+    "url": "https://github.com/leikkisa/core-data-structures/raw/master/LICENSE"
   }
 }
