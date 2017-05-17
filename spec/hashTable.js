@@ -8,8 +8,10 @@ describe('Hash Table', () => {
   'use strict'
 
   it('exists', () => {
-    expect(hashTable).to.be.a('function')
+    expect(HashTable).to.be.a('function')
   })
+
+  const ht = new HashTable()
 
   context('push()', () => {
     it('pushes an element to the top of the stack.', () => {
@@ -21,7 +23,6 @@ describe('Hash Table', () => {
   })
 })
 
-const ht = new HashTable()
 ht.put("name", "Zanzibar")  // adds a key-value pair to the hash table, deal with collisions using chaining
 ht.get("name")              // returns the data associated with key.
 ht.contains("name")         // returns true if the hash table contains the key.
