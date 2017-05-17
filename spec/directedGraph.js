@@ -1,14 +1,14 @@
 import chai, { expect } from 'chai'
 import chaiChange from 'chai-change'
-import Stack from '../src/stack'
+import Stack from '../src/directedGraph'
 
 chai.use(chaiChange)
 
-describe('Stack', () => {
+describe('Directed Graph', () => {
   'use strict'
 
   it('exists', () => {
-    expect(Stack).to.be.a('function')
+    expect(directedGraph).to.be.a('function')
   })
 
   context('push()', () => {
