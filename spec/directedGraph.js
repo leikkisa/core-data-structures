@@ -14,7 +14,70 @@ describe('Directed Graph', () => {
   const diGraph = new DirectedGraph()
 
   it('adds a vertex to the graph', () => {
-    diGraph.addVertex('v1') 
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('returns true if the graph contains the vertex or false if not', () => {
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('adds a direction from 'v1' to 'v2'', () => {
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('adds a vertex to the graph', () => {
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('adds a vertex to the graph', () => {
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('adds a vertex to the graph', () => {
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('adds a vertex to the graph', () => {
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('adds a vertex to the graph', () => {
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('adds a vertex to the graph', () => {
+    diGraph.addVertex('v1')
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
+  })
+
+  it('adds a vertex to the graph', () => {
+    diGraph.addVertex('v1')
 
     expect(() => myStack.push('foo'))
       .to.alter(() => myStack.length(), { from: 0, to: 1 })

@@ -15,8 +15,6 @@ describe('Tree Node', () => {
   const moreNode = new TreeNode({data: 10})
   const midNode = new TreeNode({data: 7, left: leastNode, right: moreNode})
 
-  console.log("blah", midNode.getData())
-
     it('getData()', () => {
       expect(midNode.getData()).to.equal(7)
     })
