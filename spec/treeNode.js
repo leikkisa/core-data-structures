@@ -15,28 +15,34 @@ describe('Tree Node', () => {
   const moreNode = new TreeNode({data: 10})
   const midNode = new TreeNode({data: 7, left: leastNode, right: moreNode})
 
-  it('getData()', () => {
-    expect(midNode.getData()).to.equal(7) //maybe not done yet
-  })
+  console.log("blah", midNode.getData())
 
-  it('getLeft()', () => { // returns the left node or null if none
-    expect(midNode.getLeft()).to.equal(3)
-  })
+    it('getData()', () => {
+      expect(midNode.getData()).to.equal(7)
+    })
 
-  it('setLeft()', () => { // changes the reference to the left node and returns the original node
-    expect(midNode.setLeft(leastNode)).to.equal(7)
-  })
+    it('getLeft()', () => { // returns the left node or null if none
+      expect(midNode.getLeft()).to.equal(leastNode)
+    })
 
-  it('new mid node after setLeft', () => { // changes the reference to the left node and returns the original node
-    expect(midNode.getData()).to.equal(3)
-  })
+    it('setLeft()', () => { // changes the reference to the left node and returns the original node
+      expect(midNode.setLeft(moreNode)).to.equal(midNode)
+    })
 
-  it('getRight()', () => { // returns the right node or null if none
-    expect(midNode.getRight()).to.equal(3)
-  })
+    it('new mid node after setLeft', () => { // changes the reference to the left node and returns the original node
+      expect(midNode.getLeft()).to.equal(moreNode)
+    })
 
-  it('new mid node after setRight', () => { // changes the reference to the right node and returns the original node
-    expect(midNode.getData()).to.equal(10)
-  })
+    it('getRight()', () => { // returns the right node or null if none
+      expect(midNode.getRight()).to.equal(moreNode)
+    })
+
+    it('setRight()', () => { // changes the reference to the left node and returns the original node
+      expect(midNode.setRight(leastNode)).to.equal(midNode)
+    })
+
+    it('new mid node after setRight', () => { // changes the reference to the right node and returns the original node
+      expect(midNode.getRight()).to.equal(leastNode)
+    })
 
 })
