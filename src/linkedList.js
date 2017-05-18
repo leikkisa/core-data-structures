@@ -15,36 +15,41 @@ export default class LinkedList {
     this._length++
   }
 
-  removeAt(index) {
-   let currentNode = this.head;
-   const message = 'Non-existent node'
+  remove(index) {
+    let currentNode = this.head
+    let beforeNodeToDelete
+    let nodeToDelete
+    let deletedNode
+    const message = 'Non-existent node'
 
-   if (index < 0 || index > this._length) {
-     throw new Error(message.failure)
-   }
+    if (index < 0 || index > this._length) {
+      throw new Error(message.failure)
+    }
 
-   if (index === 0) {
-     this._length--
-     if (this._length > 0) {this.head = currentNode.next}
-     deletedNode = currentNode
-     currentNode = null
-     return deletedNode
-   }
+    if (index === 0) {
+      this._length--
+      if (this._length > 0) {this.head = currentNode.next}
+      deletedNode = currentNode
+      currentNode = null
+      return deletedNode
+    }
 
-   let count = 0
-   while (count < index) {
-     beforeNodeToDelete = currentNode
-     currentNode = currentNode.next
-     nodeToDelete = currentNode.next
-     count++
-   }
+
+
+    let count = 0
+    while (count < index) {
+      beforeNodeToDelete = currentNode
+      currentNode = currentNode.next
+      nodeToDelete = currentNode.next
+      count++
+    }
    if (index !== this._length) {
      beforeNodeToDelete.next = nodeToDelete.next
    }
-   deletedNode = nodeToDelete
-   nodeToDelete = null
-   this._length--
-   return deletedNode
+    deletedNode = nodeToDelete
+    nodeToDelete = null
+    this._length--
+    return deletedNode
   }
 
   find(key) {
