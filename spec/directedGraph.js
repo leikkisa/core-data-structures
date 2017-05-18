@@ -8,20 +8,19 @@ describe('Directed Graph', () => {
   'use strict'
 
   it('exists', () => {
-    expect(directedGraph).to.be.a('function')
+    expect(DirectedGraph).to.be.a('function')
   })
 
-  context('push()', () => {
-    it('pushes an element to the top of the stack.', () => {
-      const myStack = new Stack()
+  const diGraph = new DirectedGraph()
 
-      expect(() => myStack.push('foo'))
-        .to.alter(() => myStack.length(), { from: 0, to: 1 })
-    })
+  it('adds a vertex to the graph', () => {
+    diGraph.addVertex('v1') 
+
+    expect(() => myStack.push('foo'))
+      .to.alter(() => myStack.length(), { from: 0, to: 1 })
   })
 })
 
-const diGraph = new DirectedGraph()
 diGraph.addVertex('v1')               // adds a vertex to the graph.
 diGraph.hasVertex('v1')               // returns true if the graph contains the vertex or false if not.
 diGraph.addDirection('v1', 'v2')      // adds a direction from 'v1' to 'v2'.

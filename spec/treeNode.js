@@ -23,24 +23,20 @@ describe('Tree Node', () => {
     expect(midNode.getLeft()).to.equal(3)
   })
 
-  context('setLeft', () => {
-    it('setLeft()', () => { // changes the reference to the left node and returns the original node
-      expect(midNode.setLeft(leastNode)).to.equal(7)
-    })
-
-    it('new mid node after setLeft', () => { // changes the reference to the left node and returns the original node
-      expect(midNode.getData()).to.equal(3)
-    })
+  it('setLeft()', () => { // changes the reference to the left node and returns the original node
+    expect(midNode.setLeft(leastNode)).to.equal(7)
   })
 
-  context('setRight', () => {
-    it('getRight()', () => { // returns the right node or null if none
-      expect(midNode.getRight()).to.equal(3)
-    })
+  it('new mid node after setLeft', () => { // changes the reference to the left node and returns the original node
+    expect(midNode.getData()).to.equal(3)
+  })
 
-    it('new mid node after setRight', () => { // changes the reference to the right node and returns the original node
-      expect(midNode.getData()).to.equal(10)
-    })
+  it('getRight()', () => { // returns the right node or null if none
+    expect(midNode.getRight()).to.equal(3)
+  })
+
+  it('new mid node after setRight', () => { // changes the reference to the right node and returns the original node
+    expect(midNode.getData()).to.equal(10)
   })
 
 })
