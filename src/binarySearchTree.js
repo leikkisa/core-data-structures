@@ -101,7 +101,7 @@ export default class BinarySearchTree {
       throw new Error ('There are no nodes in this tree.')
     }
 
-    inOrder(node) {
+    let inOrder = (node) => ({
       if(node){
         // Left subtree
         if (node.left !== null){
@@ -115,7 +115,7 @@ export default class BinarySearchTree {
           inOrder(node.right)
         }
       }
-    }
+    })
 
     inOrder(this._root)
   }
