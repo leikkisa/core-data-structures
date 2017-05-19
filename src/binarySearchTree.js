@@ -8,33 +8,31 @@ export default class BinarySearchTree {
   }
 
   insert(value) {
-    let treeNode = new TreeNode()
+    let treeNode = new TreeNode({data: value})
     let currentNode
-    treeNode.data = value
     this._size++
 
     if(this._root === null) {
       this._root = treeNode
     } else {
       currentNode = this._root
-      }
-
-    while(true) {
-      if(currentNode.data > value) {
-        if (currentNode.left === null) {
-          currentNode.left = treeNode
-          break
-        } else {
-          currentNode = currentNode.left
+      while(true) {
+        if(currentNode.data > value) {
+          if (currentNode.left === null) {
+            currentNode.left = treeNode
+            break
+          } else {
+            currentNode = currentNode.left
+          }
         }
-      }
 
-      if(currentNode.data < value) {
-        if (currentNode.right === null) {
-          currentNode.right = treeNode
-          break
-        } else {
-          currentNode = currentNode.right
+        if(currentNode.data <= value) {
+          if (currentNode.right === null) {
+            currentNode.right = treeNode
+            break
+          } else {
+            currentNode = currentNode.right
+          }
         }
       }
     }
@@ -63,6 +61,8 @@ export default class BinarySearchTree {
     let found = false
     let parent = null
     let currentNode = this._root
+    let leftDiff = 0
+    let rightDiff = 0
 
     while(!found && currentNode){
       if (value < currentNode.data){
@@ -77,42 +77,48 @@ export default class BinarySearchTree {
     }
 
     if (found){
-      if (currentNode = this._root){
-        if (currentNode.right = null) {
+      if (currentNode === this._root){
+        if (currentNode.right === null) {
           this._root = currentNode.left
+
         } else {
           this._root = currentNode.right
           parent = this._root
-          while (parent) {
-            parent = parent.left
+          if (parent.left !== null) {
+            while ( parent.left !== null ) {
+              parent = parent.left
+            }
           }
           parent.left = currentNode.left
         }
-      }
-      let leftDiff = Math.abs(currentNode.left.data - parent.data) // figure out which is farther from parent to determine which should be the new top
-      let rightDiff = Math.abs(currentNode.right.data - parent.data)
-      if (currentNode.left === null || rightDiff > leftDiff) {
-        if (value < parent.data){
-          parent.left = currentNode.right
+      } else {
+        if (currentNode.left !== null && currentNode.right !== null){
+          leftDiff = Math.abs(currentNode.left.data - parent.data) // figure out which is farther from parent to determine which should be the new top
+          rightDiff = Math.abs(currentNode.right.data - parent.data)
+        }
+        if (currentNode.left === null || rightDiff > leftDiff) {
+          if (value < parent.data){
+            parent.left = currentNode.right
+          } else {
+            parent.right = currentNode.right
+          }
+          parent = currentNode.right
+          while (parent.left) {
+            parent = parent.left
+          }
+          parent.left = currentNode.left
         } else {
+          if (value > parent.data) {
+            parent.right = currentNode.left
+          } else {
+            parent.left = currentNode.left
+          }
+          parent = currentNode.left
+          while (parent.right) {
+            parent = parent.right
+          }
           parent.right = currentNode.right
         }
-        parent = currentNode.right
-        while (parent) {
-          parent = parent.left
-        }
-        parent.left = currentNode.left
-      } else {
-        if (value > parent.data) {
-          parent.right = currentNode.left
-        } else {
-          parent.left = currentNode.left
-        }
-        parent = currentNode.left
-        while (parent) {
-          parent = parent.right
-        }
-        parent.right = currentNode.right
       }
       currentNode = null
     }
@@ -124,26 +130,34 @@ export default class BinarySearchTree {
       throw new Error ('There are no nodes in this tree.')
     }
 
-    let inOrder = (node) => ({
-      if(node){
+    let inOrder = (node) => {
+      if(node !== null){
         // Left subtree
         if (node.left !== null){
           inOrder(node.left)
         }
         // Callback
-        cb(node.data)
+        cb.call(this, node)
 
         // Right subtree
         if(node.right !== null){
           inOrder(node.right)
         }
       }
-    })
+    }
 
     inOrder(this._root)
   }
 
   count(){
     return this._size
+  }
+
+  size(){
+    var length = 0
+    this.traverse(function(node2){
+        length++;
+    })
+    return length;
   }
 }
