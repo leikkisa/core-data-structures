@@ -2,7 +2,7 @@
 
 export default class TreeNode {
   constructor(node){
-    this.data = node.data
+    this.data = node.data || null
     this.left = node.left || null
     this.right = node.right || null
   }

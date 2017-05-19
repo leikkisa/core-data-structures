@@ -2,64 +2,63 @@
 import Node from '../src/node'
 export default class LinkedList {
   constructor(){
-    this.head = null
-    this.tail = null
+    this._head = null
+    this._tail = null
     this._length = 0
   }
 
   insert(key, value) {
     let node = new Node(key, value)
-    if (this.head === null) { this.head = node }
-    if (this.tail !== null) { this.tail.next = node }
-    this.tail = node
+    if (this._head === null) { this._head = node }
+    if (this._tail !== null) { this._tail._next = node }
+    this._tail = node
     this._length++
   }
 
   remove(index) {
-    let currentNode = this.head
-    let beforeNodeToDelete
-    let nodeToDelete
-    let deletedNode
-    const message = 'Non-existent node'
+    let currentNode = this._head
+    let beforeNodeToRemove
+    let nodeToRemove
+    let removedNode
 
     if (index < 0 || index > this._length) {
-      throw new Error(message.failure)
+      throw new Error('Non-existent node')
     }
 
     if (index === 0) {
       this._length--
-      if (this._length > 0) {this.head = currentNode.next}
-      deletedNode = currentNode
+      if (this._length > 0) {this._head = currentNode._next}
+      removedNode = currentNode
       currentNode = null
-      return deletedNode
+      return removedNode
     }
 
 
 
     let count = 0
     while (count < index) {
-      beforeNodeToDelete = currentNode
-      currentNode = currentNode.next
-      nodeToDelete = currentNode.next
+      beforeNodeToRemove = currentNode
+      currentNode = currentNode._next
+      nodeToRemove = currentNode._next
       count++
     }
    if (index !== this._length) {
-     beforeNodeToDelete.next = nodeToDelete.next
+     beforeNodeToRemove._next = nodeToRemove._next
    }
-    deletedNode = nodeToDelete
-    nodeToDelete = null
+    removedNode = nodeToRemove
+    nodeToRemove = null
     this._length--
-    return deletedNode
+    return removedNode
   }
 
   find(key) {
-    let currentNode = this.head
+    let currentNode = this._head
     let position = 0
     while (currentNode !== null) {
       if(currentNode.key === key) {
         return position
       }
-      currentNode = currentNode.next
+      currentNode = currentNode._next
       position++
     }
     return -1
@@ -67,9 +66,9 @@ export default class LinkedList {
 
   getValue(key) {
     let position = this.find(key)
-    let currentNode = this.head
+    let currentNode = this._head
     for (let i = 0; i <= position; i++ ) {
-      currentNode = currentNode.next
+      currentNode = currentNode._next
     }
     return currentNode.value
   }
