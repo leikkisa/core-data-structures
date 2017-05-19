@@ -77,7 +77,19 @@ export default class BinarySearchTree {
     }
 
     if (found){
-      let leftDiff = Math.abs(currentNode.left.data - parent.data)
+      if (currentNode = this._root){
+        if (currentNode.right = null) {
+          this._root = currentNode.left
+        } else {
+          this._root = currentNode.right
+          parent = this._root
+          while (parent) {
+            parent = parent.left
+          }
+          parent.left = currentNode.left
+        }
+      }
+      let leftDiff = Math.abs(currentNode.left.data - parent.data) // figure out which is farther from parent to determine which should be the new top
       let rightDiff = Math.abs(currentNode.right.data - parent.data)
       if (currentNode.left === null || rightDiff > leftDiff) {
         if (value < parent.data){
@@ -85,13 +97,24 @@ export default class BinarySearchTree {
         } else {
           parent.right = currentNode.right
         }
+        parent = currentNode.right
+        while (parent) {
+          parent = parent.left
+        }
+        parent.left = currentNode.left
       } else {
         if (value > parent.data) {
           parent.right = currentNode.left
         } else {
           parent.left = currentNode.left
         }
+        parent = currentNode.left
+        while (parent) {
+          parent = parent.right
+        }
+        parent.right = currentNode.right
       }
+      currentNode = null
     }
     this._size--
   }

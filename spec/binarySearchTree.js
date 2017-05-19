@@ -35,7 +35,7 @@ describe('Binary Search Tree', () => {
   })
 
   it('return the number of nodes in the tree', () => {
-    bst.count()
+    expect(bst.count()).to.equal(3)
   })
 
 })
