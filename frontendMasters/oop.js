@@ -6,5 +6,5 @@ Yurt.prototype.countRibs = function(){
     console.log("Yum!");
   }
 }
-var biancasHouse= new Yurt(50);
+var sallysHouse= new Yurt(50);
 biancasHouse.countRibs() //"Yum!"
